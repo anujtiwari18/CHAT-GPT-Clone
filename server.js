@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const colors = require('colors');
 const dotenv = require('dotenv');
 const connectDB = require("./config/db");
+// routes path
+const authRoutes = require('./routes/authRoutes')
 
 
 //dotenv
@@ -22,7 +24,7 @@ app.use(morgan('dev'))
 
 
 const PORT = process.env.PORT || 8080;
-
+app.use("/api/v1/auth", authRoutes);
 //listen server
 app.listen(PORT, () => {
     console.log(`server running in ${process.env.DEV_MODE} ON ${PORT}`.bgCyan.white);
